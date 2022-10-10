@@ -1,2 +1,7 @@
 # s360
-S360 repo
+
+
+
+## Setup
+
+If you want to use this project for remote debugging with PyCharm
