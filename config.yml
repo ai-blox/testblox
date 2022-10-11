@@ -4,10 +4,9 @@ test-benches:
       -
         module: lan9514
         class: Lan9514
-        name: 'eth1'
-        number: 1
-      -
-        module: lan9514
-        class: Lan9514
-        name: 'eth2'
-        number: 1
+        config:
+          name: 'eth0'
+          bus: 1
+          device: 2
+
+

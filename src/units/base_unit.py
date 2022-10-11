@@ -2,10 +2,14 @@ import logging
 import datetime
 
 
-class BaseTest(object):
+class BaseUnit(object):
 
-    def __init__(self, name):
-        self.logger = logging.getLogger(name)
+    def __init__(self, config):
+
+        self.name = config.get('name', 'NoNameProvide')
+
+        self.logger = logging.getLogger(self.name)
+        self.config = config
 
         self.start_time = None
         self.end_time = None

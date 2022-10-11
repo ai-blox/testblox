@@ -3,7 +3,7 @@ import sys
 import argparse
 import logging
 import yaml
-from test_bench import TestBench
+from lib.test_bench import TestBench
 
 
 def setup_logger(debug):
@@ -35,8 +35,8 @@ def load_config(filename):
     return ret_configuration
 
 
-def create_test_bench(config):
-    return TestBench(config)
+def create_test_bench(name, config):
+    return TestBench(name, config)
 
 
 if __name__ == "__main__":
@@ -76,7 +76,7 @@ if __name__ == "__main__":
         exit(1)
 
     test_bench_config = test_config[args.tb]
-    test_bench = create_test_bench(test_bench_config)
+    test_bench = create_test_bench(args.tb, test_bench_config)
 
     # -------------------------------------------
     # Test Loop
