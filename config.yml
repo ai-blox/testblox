@@ -1,0 +1,13 @@
+test-benches:
+  S360V0.1:
+    unit-tests:
+      -
+        module: lan9514
+        class: Lan9514
+        name: 'eth1'
+        number: 1
+      -
+        module: lan9514
+        class: Lan9514
+        name: 'eth2'
+        number: 1

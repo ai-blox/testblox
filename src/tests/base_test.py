@@ -1,13 +1,10 @@
 import logging
 import datetime
 
-class Unit(object):
 
-    def __init__(self):
-        self.__int__('Unit')
+class BaseTest(object):
 
-    def __int__(self, name):
-
+    def __init__(self, name):
         self.logger = logging.getLogger(name)
 
         self.start_time = None
@@ -30,10 +27,10 @@ class Unit(object):
         self.error_msg = None
 
         self.start_time = datetime.datetime.now()
-        while not self.finished_test:
+        while not self.finish_test:
             self.nextState = self.currState
             self.currState()
-            self.currState =self.nextState
+            self.currState = self.nextState
         self.end_time = datetime.datetime.now()
 
         duration = self.end_time - self.start_time
@@ -53,6 +50,3 @@ class Unit(object):
 
     def state_0(self):
         raise NotImplementedError
-
-
-
