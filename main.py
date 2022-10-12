@@ -3,7 +3,7 @@ import sys
 import argparse
 import logging
 import yaml
-from lib.test_bench import TestBench
+from src.lib.test_bench import TestBench
 
 
 def setup_logger(debug):

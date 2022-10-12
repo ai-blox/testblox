@@ -36,7 +36,6 @@ class BaseUnit(object):
             self.currState()
             self.currState = self.nextState
         self.end_time = datetime.datetime.now()
-
         duration = self.end_time - self.start_time
         minutes = divmod(duration.total_seconds(), 60)
         seconds = minutes[1]

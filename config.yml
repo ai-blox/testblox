@@ -6,7 +6,12 @@ test-benches:
         class: Lan9514
         config:
           name: 'eth0'
-          bus: 1
-          device: 2
+          bus_id: 1
+          device_id: 2
+      -
+        module: mmc
+        class: Mmc
+        config:
+          blk_id: mmcblk1
 
 
