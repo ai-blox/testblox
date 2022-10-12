@@ -2,16 +2,14 @@ from src.units.base import BaseUnit
 from src.lib.usb import Usb
 
 
-class Mmc(BaseUnit):
+class SdCard(BaseUnit):
 
     def __init__(self, config):
         super().__init__(config)
 
-        self.logger.info('Initialize mmc test unit')
+        self.logger.info('Initialize sdcard test unit')
 
-        self.blk_id = config.get('blk_id', 'mmcblk1')
-
-        self.usb = Usb()
+        self.blk_id = self.check_config_parameter('blk_id', 'mmcblk1')
 
     def state_0(self):
 

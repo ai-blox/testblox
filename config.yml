@@ -5,13 +5,14 @@ test-benches:
         module: lan9514
         class: Lan9514
         config:
-          name: 'eth0'
+          name: 'eth1'
           bus_id: 1
           device_id: 2
       -
-        module: mmc
-        class: Mmc
+        module: sdcard
+        class: SdCard
         config:
+          name: 'usdc'
           blk_id: mmcblk1
 
 

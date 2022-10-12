@@ -8,8 +8,8 @@ class Lan9514(BaseUnit):
 
         self.logger.info('Initialize LAN9514 test unit')
 
-        self.bus_id = config.get('bus_id', 0)
-        self.device_id = config.get('device_id', 0)
+        self.bus_id = self.check_config_parameter('bus_id', 0)
+        self.device_id = self.check_config_parameter('device_id', 0)
 
         self.usb = Usb()
 

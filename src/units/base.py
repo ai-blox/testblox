@@ -6,9 +6,11 @@ class BaseUnit(object):
 
     def __init__(self, config):
 
-        self.name = config.get('name', 'NoNameProvide')
-
+        self.name = config.get('name', 'NoName')
         self.logger = logging.getLogger(self.name)
+        if self.name == 'NoName':
+            self.logger.warning("Config parameter 'name' not found. Default to 'NoName'")
+
         self.config = config
 
         self.start_time = None
@@ -22,6 +24,11 @@ class BaseUnit(object):
         self.finished = False
         self.finish_test = False
         self.error_msg = None
+
+    def check_config_parameter(self, param, default):
+        if not (param in self.config):
+            self.logger.warning("Config parameter '{name}' not found. Default to '{default}'".format(name=param, default=default))
+        return self.config.get(param, default)
 
     def run(self):
         self.currState = self.state_0
