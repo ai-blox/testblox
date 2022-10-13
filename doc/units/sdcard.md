@@ -16,7 +16,6 @@
 - partition_table: link to a partition table json file. If provided, the sd card will be configured with the partition table. 
 
 ## Config example
-
 ```yaml
 name: 'usdc'
 blk_id: mmcblk1
