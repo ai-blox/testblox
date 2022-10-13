@@ -17,6 +17,6 @@ test-benches:
           blk_size:
              size: 64
              unit: G
-          partition_table: 64GB_P5_32GB_P6_32GB.json
+          partition_table: 64GB_P5_32GB_P6_32GB
 
 
