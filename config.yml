@@ -15,8 +15,8 @@ test-benches:
           name: 'usdc'
           blk_id: mmcblk1
           blk_size:
-             size: 32
+             size: 64
              unit: G
-          partition_table: 32GB_P5_16GB_P6_16GB.json
+          partition_table: 64GB_P5_32GB_P6_32GB.json
 
 
