@@ -12,11 +12,15 @@ test-benches:
         module: sdcard
         class: SdCard
         config:
-          name: 'usdc'
-          blk_id: mmcblk1
+          name: 'uSDCard'
+          path: '/dev/mmcblk1'
           blk_size:
              size: 64
              unit: G
           partition_table: 64GB_P5_32GB_P6_32GB
+          format:
+            partition: p4
+
+            partition: P4
 
 

@@ -1,5 +1,5 @@
 from src.units.base import BaseUnit
-from src.lib.disk import Disk
+from src.lib.blockdevice import BlockDevice
 
 
 class SdCard(BaseUnit):
@@ -7,25 +7,26 @@ class SdCard(BaseUnit):
     def __init__(self, config):
         super().__init__(config)
 
-        self.logger.info('Initialize uSDCard test unit')
+        self.logger.info('Initialize disk test unit')
 
-        self.blk_id = self.check_config_parameter('blk_id', None)
-        if self.blk_id is None:
-            self.logger.info('Mandatory parameter: blk_id not provided')
+        self.blk_id = self.check_config_parameter('blk_id', mandatory=True)
+        self.blk_size = self.check_config_parameter('blk_size', mandatory=True)
 
-        self.blk_size = self.check_config_parameter('blk_size', None)
-        if self.blk_size is None:
-            self.logger.info('Mandatory parameter blk_size not provide')
+        if (self.blk_id is None) or (self.blk_size is None):
+            self.logger.error('Failed to initialize disk test unit')
+            return
 
-        self.partition_table = self.check_config_parameter('partition_table', None)
+        #self.partition_table = self.check_config_parameter('partition_table', None)
 
-        self.disk = Disk()
+        self.disk = BlockDevice(self.path)
+
+        self.initialized = True
 
     def state_0(self):
         self.logger.info('Start uSDCard test')
         if not self.disk.lsblk():
-            self.logger.error('lsblk failed')
-            self.nextState = self.state_finish
+            self.error('lsblk failed')
+            return
 
         self.nextState = self.state_1
 

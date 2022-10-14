@@ -8,10 +8,15 @@ class Lan9514(BaseUnit):
 
         self.logger.info('Initialize LAN9514 test unit')
 
-        self.bus_id = self.check_config_parameter('bus_id', 0)
-        self.device_id = self.check_config_parameter('device_id', 0)
+        self.bus_id = self.check_config_parameter('bus_id', mandatory=True)
+        self.device_id = self.check_config_parameter('device_id', mandatory=True)
+
+        if (self.bus_id is None) or (self.device_id is None):
+            self.logger.error('Failed to initialize LAN9514 test unit')
+            return
 
         self.usb = Usb()
+        self.initialized = True
 
     def state_0(self):
         self.logger.info('Start LAN9514 test, scan usb bus')
