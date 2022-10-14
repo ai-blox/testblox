@@ -1,1 +1,1 @@
-hurry.filesize
+hfilesize

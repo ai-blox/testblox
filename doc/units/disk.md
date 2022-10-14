@@ -1,11 +1,11 @@
-# SD Card test unit
+# Disk test unit
 
 ## Config parameters
 
 **Mandantory**
 - name: the name will be displayed in the logging 
-- blk_id: reference to the block device e.g. mmcblk1
-- blk_size: the expected disk size given with a size and unit key, e.g.:
+- path: reference to the block device e.g. mmcblk1
+- size: the expected disk size given with a size and unit key, e.g.:
   ```yaml
   blk_size:
      size: 64

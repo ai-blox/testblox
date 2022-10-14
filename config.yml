@@ -9,14 +9,12 @@ test-benches:
           bus_id: 1
           device_id: 2
       -
-        module: sdcard
-        class: SdCard
+        module: disk
+        class: Disk
         config:
           name: 'uSDCard'
           path: '/dev/mmcblk1'
-          blk_size:
-             size: 64
-             unit: G
+          size: 64G
           partition_table: 64GB_P5_32GB_P6_32GB
           format:
             partition: p4
