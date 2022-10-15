@@ -12,6 +12,7 @@ class Disk(BaseUnit):
         self.path = self.check_config_parameter('path', mandatory=True)
         self.size = self.check_config_parameter('size', mandatory=True)
         self.partition_table = self.check_config_parameter('partition_table')
+        self.format = self.check_config_parameter('format')
 
         if (self.path is None) or (self.size is None):
             self.logger.error('Failed to initialize disk test unit')
@@ -31,7 +32,7 @@ class Disk(BaseUnit):
 
     def state_1(self):
         if self.size is not None:
-            if self.disk.check_partition_size(1, self.size):
+            if self.disk.check_disk_size(self.size):
                 self.logger.info("Disk has the right size: {}".format(self.size))
                 self.nextState = self.state_3
             else:
@@ -54,6 +55,21 @@ class Disk(BaseUnit):
             self.error("Applying partition table failed")
 
     def state_5(self):
+        if self.format is None:
+            self.logger.info("Partitions don't need to be format")
+            self.nextState = self.state_finish
+        else:
+            partition_list = []
+            for partition in self.format:
+                partition_list.append(partition['partition'])
+            self.logger.info("Follow partitions will be format: {}".format(partition_list))
+            self.nextState = self.state_6
+
+    def state_6(self):
+        partition_list = []
+        for partition in self.format:
+            self.disk.format_partition(partition['partition'], partition['type'])
+
         self.nextState = self.state_finish
 
     def state_finish(self):

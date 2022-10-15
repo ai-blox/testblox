@@ -17,8 +17,11 @@ test-benches:
           size: 64G
           partition_table: 64GB_P5_32GB_P6_32GB
           format:
-            partition: p4
-
-            partition: P4
+              -
+                partition: 5
+                type: ext4
+              -
+                partition: 6
+                type: ext4
 
 
