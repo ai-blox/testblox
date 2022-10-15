@@ -15,7 +15,7 @@ Afterwards, you can export the partition table with following command.
 Chose a logical name.
 
 ```shell 
-$ sudo sfdisk -J /dev/mmcblk1 > partition-table-name.txt
+$ sudo sfdisk -d /dev/mmcblk1 > partition-table-name.txt
 ```
 
 Save the generated file in the partition-tables directory
