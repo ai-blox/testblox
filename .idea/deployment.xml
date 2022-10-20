@@ -1,12 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData" autoUpload="Always" serverName="ai-blox@192.168.1.127:22 password" remoteFilesAllowedToDisappearOnAutoupload="false" confirmBeforeUploading="false" compareModeInSync="TEXT" showNewOnSourceInSync="false">
+  <component name="PublishConfigData" autoUpload="Always" serverName="s360box@192.168.1.127:22 password" remoteFilesAllowedToDisappearOnAutoupload="false" confirmBeforeUploading="false" compareModeInSync="TEXT" showNewOnSourceInSync="false">
     <option name="confirmBeforeUploading" value="false" />
     <serverData>
-      <paths name="ai-blox@192.168.1.127:22 password">
+      <paths name="s360box">
         <serverdata>
           <mappings>
-            <mapping deploy="/tmp/pycharm_project_681" local="$PROJECT_DIR$" />
+            <mapping deploy="/tmp/testblox" local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="s360box@192.168.1.127:22 password">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/tmp/pycharm_project_250" local="$PROJECT_DIR$" />
           </mappings>
         </serverdata>
       </paths>
