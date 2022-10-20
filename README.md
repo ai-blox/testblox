@@ -6,7 +6,7 @@ This script need to be run as root.
 
 Example use
 ```shell
-$ sudo python main.py --tb S360V0.1 --config config.yml --debug
+$ sudo python3 main.py --tb S360V0.1 --config config.yml --debug
 ```
 
 
