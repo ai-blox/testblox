@@ -23,7 +23,7 @@ class Disk(BaseUnit):
         self.initialized = True
 
     def state_0(self):
-        self.logger.info('Start Disk test')
+        self.logger.info('Start disk unit')
 
         if not self.disk.read_partition_table():
             self.error("Read partition table failed")
@@ -73,5 +73,5 @@ class Disk(BaseUnit):
         self.nextState = self.state_finish
 
     def state_finish(self):
-        self.logger.info('uSDCard test finished')
+        self.logger.info('Disk unit finished')
         self.nextState = self.request_finish
