@@ -1,8 +1,16 @@
 # testblox
 
+This is a test script for testing a BLOX device
+
+This script need to be run as root.
+
+Example use
+```shell
+$ sudo python main.py --tb S360V0.1 --config config.yml --debug
+```
 
 
-## Setup
+## Setup [TODO]
 
 If you want to use this project for remote debugging with PyCharm
 
