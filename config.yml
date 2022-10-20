@@ -28,7 +28,7 @@ test-benches:
         config:
           name: 'cmd'
           commands:
-              apt update
-              apt install cryptsetup
+              - apt update
+              - apt install cryptsetup
 
 

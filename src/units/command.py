@@ -19,7 +19,6 @@
 # along with pysfdisk.  If not, see <http://www.gnu.org/licenses/>
 
 from src.units.base import BaseUnit
-import apt
 
 class Command(BaseUnit):
 
@@ -33,10 +32,6 @@ class Command(BaseUnit):
         if self.commands is None:
             self.logger.error("Failed to initialize command unit")
             return
-
-        self.cache = apt.cache.Cache()
-        self.cache.update()
-        self.cache.open()
 
         self.initialized = True
 
