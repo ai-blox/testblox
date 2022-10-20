@@ -23,5 +23,12 @@ test-benches:
               -
                 partition: 6
                 type: ext4
+      - module: command
+        class: Command
+        config:
+          name: 'cmd'
+          commands:
+              apt update
+              apt install cryptsetup
 
 

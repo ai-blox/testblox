@@ -19,22 +19,37 @@
 # along with pysfdisk.  If not, see <http://www.gnu.org/licenses/>
 
 from src.units.base import BaseUnit
+import apt
 
-class Apt(BaseUnit):
+class Command(BaseUnit):
 
     def __init__(self, config):
         super().__init__(config)
 
-        self.logger.info('Initialize apt unit')
+        self.logger.info("Initialize command unit")
 
-        self.commands = self.check_config_parameter('commands', mandatory=True)
+        self.commands = self.check_config_parameter("commands", mandatory=True)
 
         if self.commands is None:
-            self.logger.error('Failed to initialize disk test unit')
+            self.logger.error("Failed to initialize command unit")
             return
 
-        self.disk = BlockDevice(self.path)
+        self.cache = apt.cache.Cache()
+        self.cache.update()
+        self.cache.open()
 
         self.initialized = True
 
     def state_0(self):
+        self.logger.info("Start command unit")
+        self.nextState = self.state_1
+
+    def state_1(self):
+        for command in self.commands:
+            self.logger.info("Execute command: {}".format(command))
+
+        self.nextState = self.state_finish
+
+    def state_finish(self):
+        self.logger.info("command finished")
+        self.nextState = self.request_finish
