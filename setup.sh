@@ -9,4 +9,4 @@ apt-get update
 apt-get install parted
 apt-get -y install python3-pip
 
-pip3 requirments.txt
+pip3 install -r requirments.txt

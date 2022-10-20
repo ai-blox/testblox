@@ -1,2 +1,2 @@
 hfilesize
-yaml
+pyyaml
