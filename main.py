@@ -30,7 +30,7 @@ def load_config(filename):
         return None
 
     with open(config_path, 'r') as ymlfile:
-        ret_configuration = yaml.load(ymlfile)
+        ret_configuration = yaml.full_load(ymlfile)
 
     return ret_configuration
 
