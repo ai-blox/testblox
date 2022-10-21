@@ -1,24 +1,24 @@
-from pca95xx import PCA95XX_GPIO
+from src.lib.pca95xx import PCA95XX_GPIO
 from time import sleep
 
 # Assumes a PCA9555 with 16 GPIO's at address 0x20
 chip = PCA95XX_GPIO(0, 0x74, 16)
 
-chip.setup(0, PCA95XX_GPIO.OUT) #DO1
-chip.setup(1, PCA95XX_GPIO.OUT) #DO3
-chip.setup(2, PCA95XX_GPIO.OUT) #DO2
-chip.setup(3, PCA95XX_GPIO.OUT) #DO4
-chip.setup(4, PCA95XX_GPIO.OUT) #DO5
-chip.setup(5, PCA95XX_GPIO.OUT) #DO6
-chip.setup(6, PCA95XX_GPIO.OUT) #DO7
-chip.setup(7, PCA95XX_GPIO.IN) #DI1
-chip.setup(8, PCA95XX_GPIO.IN) #DI2
-chip.setup(9, PCA95XX_GPIO.IN) #DI3
-chip.setup(10, PCA95XX_GPIO.IN) #DI4
-chip.setup(11, PCA95XX_GPIO.IN) #DI5
-chip.setup(12, PCA95XX_GPIO.IN) #DI6
-chip.setup(13, PCA95XX_GPIO.OUT) #GREEN
-chip.setup(14, PCA95XX_GPIO.OUT) #RED
+chip.setup(0, PCA95XX_GPIO.OUT)  # DO1
+chip.setup(1, PCA95XX_GPIO.OUT)  # DO3
+chip.setup(2, PCA95XX_GPIO.OUT)  # DO2
+chip.setup(3, PCA95XX_GPIO.OUT)  # DO4
+chip.setup(4, PCA95XX_GPIO.OUT)  # DO5
+chip.setup(5, PCA95XX_GPIO.OUT)  # DO6
+chip.setup(6, PCA95XX_GPIO.OUT)  # DO7
+chip.setup(7, PCA95XX_GPIO.IN)  # DI1
+chip.setup(8, PCA95XX_GPIO.IN)  # DI2
+chip.setup(9, PCA95XX_GPIO.IN)  # DI3
+chip.setup(10, PCA95XX_GPIO.IN)  # DI4
+chip.setup(11, PCA95XX_GPIO.IN)  # DI5
+chip.setup(12, PCA95XX_GPIO.IN)  # DI6
+chip.setup(13, PCA95XX_GPIO.OUT)  # GREEN
+chip.setup(14, PCA95XX_GPIO.OUT)  # RED
 
 di1 = 0
 di2 = 0
@@ -27,7 +27,7 @@ di4 = 0
 di5 = 0
 di6 = 0
 
-while(True):
+while (True):
     if di1 != chip.input(7):
         di1 = chip.input(7)
         if di1 > 0:
@@ -63,7 +63,7 @@ while(True):
         else:
             chip.output(3, 1)
             print("DI4=1")
-                    
+
     if di5 != chip.input(11):
         di5 = chip.input(11)
         if di5 > 0:
