@@ -1,4 +1,9 @@
 #!/bin/bash
 
 source ~/.venv-aiblox/bin/activate
-sudo su -c "~/.venv-aiblox/bin/python3 main.py --tb $1 --config config.yml --debug"
+
+pushd ~/.venv-aiblox/bin
+PYTHON_DIR=$(pwd)
+popd
+
+sudo su -c "${PYTHON_DIR}/python3 main.py --tb ${1} --config config.yml --debug"
