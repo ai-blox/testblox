@@ -21,6 +21,11 @@ Example use
 sudo ~/.venv-aiblox/bin/python3 main.py --tb S360V0.1 --config config.yml --debug
 ```
 
+There is a run script which make things easier:
+```shell
+./run.sh S360V0.1
+```
+
 ## Remote PyCharm debugging 
 
 This chapter describes how you can use PyCharm to run this script remotely.
