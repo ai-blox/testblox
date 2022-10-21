@@ -17,9 +17,9 @@ This script need to be run as root.
 
 Example use
 ```shell
-$ sudo python3 main.py --tb S360V0.1 --config config.yml --debug
+~source ~/.venv-aiblox/bin/activate
+sudo ~/.venv-aiblox/bin/python3 main.py --tb S360V0.1 --config config.yml --debug
 ```
-
 
 ## Remote PyCharm debugging 
 
