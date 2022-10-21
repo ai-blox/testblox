@@ -11,4 +11,3 @@ source ~/venv-aiblox/bin/activate
 
 pip3 install -r requirments.txt
 
-source scripts/install_apt.sh ~/ven-aiblox/

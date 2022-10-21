@@ -19,6 +19,8 @@
 # along with pysfdisk.  If not, see <http://www.gnu.org/licenses/>
 
 from src.units.base import BaseUnit
+import subprocess
+from subprocess import PIPE
 
 class Command(BaseUnit):
 
@@ -42,6 +44,14 @@ class Command(BaseUnit):
     def state_1(self):
         for command in self.commands:
             self.logger.info("Execute command: {}".format(command))
+
+            process = subprocess.Popen(command, stdin=PIPE, stdout=PIPE, shell=True)
+            process.communicate()
+
+            if process.returncode == 0:
+                self.logger.info("Executed successful")
+            else:
+                self.logger.info("Executed failed")
 
         self.nextState = self.state_finish
 
