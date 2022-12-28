@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData" autoUpload="Always" serverName="s360box@192.168.1.127:22 password 541" remoteFilesAllowedToDisappearOnAutoupload="false" confirmBeforeUploading="false" compareModeInSync="TEXT" showNewOnSourceInSync="false">
+  <component name="PublishConfigData" autoUpload="Always" serverName="s360box@192.168.1.136:22 password" remoteFilesAllowedToDisappearOnAutoupload="false" confirmBeforeUploading="false" compareModeInSync="TEXT" showNewOnSourceInSync="false">
     <option name="confirmBeforeUploading" value="false" />
     <serverData>
       <paths name="s360box@192.168.1.127:22 password 250">
@@ -14,6 +14,13 @@
         <serverdata>
           <mappings>
             <mapping deploy="/tmp/pycharm_project_541" local="$PROJECT_DIR$" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="s360box@192.168.1.136:22 password">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/tmp/pycharm_project_383" local="$PROJECT_DIR$" />
           </mappings>
         </serverdata>
       </paths>
