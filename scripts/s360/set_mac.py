@@ -1,8 +1,9 @@
 import os
 import sys
-from smbus2 import SMBus
+import smbus
+import time
 
-bus = SMBus(0)
+bus = smbus.SMBus(1)
 
 START_MAC = 0x8C1F643B703C
 
@@ -14,6 +15,7 @@ def program_eth0_mac(mac):
         byte = ((mac >> ele) & 0xff)
         #print("Write to " + hex(addr) + ', byte: ' + hex(byte) )
         bus.write_byte_data(0x50, addr, byte)
+        time.sleep(0.1)
         addr -= 1
 
 
@@ -25,6 +27,7 @@ def program_eth1_mac(mac):
         byte = ((mac >> ele) & 0xff)
         #print("Write to " + hex(addr) + ', byte: ' + hex(byte) )
         bus.write_byte_data(0x50, addr, byte)
+        time.sleep(0.1)
         addr -= 1
 
 
