@@ -46,6 +46,9 @@ if __name__ == "__main__":
     if not os.geteuid() == 0:
         sys.exit("\nOnly root can run this script\n")
 
+    print('set fan to max')
+    with open('/sys/devices/pwm-fan/target_pwm', 'w') as text_file:
+        print('255', file=text_file)
 
     print('Enter box number:')
     box_num = int(input())
