@@ -1,4 +1,4 @@
-from src.test_units.baseunit import BaseUnit
+from src.testunits.baseunit import BaseUnit
 import time
 
 class SmokeTest(BaseUnit):
@@ -70,7 +70,7 @@ class SmokeTest(BaseUnit):
 
     def state_6(self) -> None:
         if (self.actual_current < self.min_current) or (self.actual_current > self.max_current):
-            self.logger.error('Measure current is not within borders: %f < %f < %f', self.min_current, self.actual_current, self.max_current)
+            self.logger.error('Measure current is not within borders: %f < %f < %f' % (self.min_current, self.actual_current, self.max_current))
             self.tenma.power_off()
 
         self.next_state = self.state_finish

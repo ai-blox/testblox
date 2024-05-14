@@ -29,7 +29,7 @@ class TestBench:
                 self.drivers.append(driver_obj)
 
         for unit in config['test-units']:
-            module_name = 'src.test_units.' + unit['module']
+            module_name = 'src.testunits.' + unit['module']
             self.logger.info('Import module %s:' % module_name)
             class_name = unit['class']
             unit_module = import_module(module_name)
