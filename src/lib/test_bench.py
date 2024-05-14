@@ -13,18 +13,39 @@ class TestBench:
         self.start_time = None
         self.end_time = None
 
+        self.drivers = []
         self.unit_tests = []
 
-        for unit in config['unit-tests']:
-            module_name = 'src.units.' + unit['module']
+        for driver in config['drivers']:
+            module_name = 'src.drivers.' + driver['module']
+            self.logger.info('Import driver %s:' % module_name)
+            class_name = driver['class']
+            driver_module = import_module(module_name)
+            driver_class = getattr(driver_module, class_name)
+            driver_obj = driver_class(driver['config'])
+
+            # Only add the unit test if the initialization was successful
+            if driver_obj is not None:
+                self.drivers.append(driver_obj)
+
+        for unit in config['test-units']:
+            module_name = 'src.test_units.' + unit['module']
+            self.logger.info('Import module %s:' % module_name)
             class_name = unit['class']
             unit_module = import_module(module_name)
             unit_class = getattr(unit_module, class_name)
-            unit_obj = unit_class(unit['config'])
+            unit_obj = unit_class(unit['config'], self)
 
             # Only add the unit test if the initialization was successful
             if unit_obj is not None:
                 self.unit_tests.append(unit_obj)
+
+    def get_driver_by_name(self, name):
+        for driver in self.drivers:
+            if driver.name == name:
+                return driver
+
+        return None
 
     def run_tests(self):
 

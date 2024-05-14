@@ -1,6 +1,6 @@
 test-benches:
   S360V0.1:
-    unit-tests:
+    test-units:
       -
         module: lan9514
         class: Lan9514
@@ -23,7 +23,8 @@ test-benches:
               -
                 partition: 6
                 type: ext4
-      - module: command
+      -
+        module: command
         class: Command
         config:
           name: 'cmd'
@@ -31,4 +32,27 @@ test-benches:
               - apt-get update
               - apt-get install cryptsetup
 
+  BLOX-S:
+    drivers:
+      -
+        module: ps.tenma
+        class: Tenma
+        config:
+          name: PS1
+          serial_port: /dev/tty.usbmodem001C284402481
+
+    test-units:
+      -
+        module: power.smoke_test
+        class: SmokeTest
+        config:
+          name: SmokeTest
+          power_supply: PS1
+          voltage: 24
+          current: 0.5
+          max_current: 0.240
+          min_current: 0.050
+          power_up_delay: 1
+          test_time: 2
+          leave_state: False
 

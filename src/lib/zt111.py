@@ -279,6 +279,13 @@ def main():
     #label += 'A40,65,0,2,1,1,N,""\n'
     #label += 'LE200,6,2,85\n'
 
+    label = '\n'
+    label += 'A40,6,1,2,1,1,N,"S360"\n'
+    label += 'A65,10,0,2,1,1,N,"Secury 360 V3"\n'
+    label += 'A65,30,0,1,1,1,N,"V3-AIBP0022PDBB-S/N:2024050005"\n'
+    label += 'LE55,5,2,85\n'
+    label += 'B85,55,0,3,3,1,30,N,"10.30.0003"\n'
+
     printer.print_label(label)
 
 if __name__ == '__main__':

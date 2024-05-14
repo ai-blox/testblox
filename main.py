@@ -41,8 +41,8 @@ def create_test_bench(name, config):
 
 if __name__ == "__main__":
 
-    if not os.geteuid() == 0:
-        sys.exit("\nOnly root can run this script\n")
+    #if not os.geteuid() == 0:
+    #    sys.exit("\nOnly root can run this script\n")
 
     parser = argparse.ArgumentParser(description='AI-BLOX test system')
     # general

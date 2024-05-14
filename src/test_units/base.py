@@ -4,7 +4,7 @@ import datetime
 
 class BaseUnit(object):
 
-    def __init__(self, config):
+    def __init__(self, config, test_bench):
         # Setup member variables
         self.name = config.get('name', 'NoName')
         self.logger = logging.getLogger(self.name)
@@ -12,6 +12,7 @@ class BaseUnit(object):
             self.logger.warning("Config parameter 'name' not found. Default to 'NoName'")
 
         self.config = config
+        self.test_bench = test_bench
         self.initialized = False
 
         self.start_time = None
