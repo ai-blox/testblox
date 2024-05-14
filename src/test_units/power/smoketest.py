@@ -68,13 +68,13 @@ class SmokeTest(BaseUnit):
 
         self.next_state = self.state_6
 
-    def state_6(self):
+    def state_6(self) -> None:
         if (self.actual_current < self.min_current) or (self.actual_current > self.max_current):
             self.logger.error('Measure current is not within borders: %f < %f < %f', self.min_current, self.actual_current, self.max_current)
             self.tenma.power_off()
 
         self.next_state = self.state_finish
 
-    def state_finish(self):
+    def state_finish(self) -> None:
         self.logger.info('SmokeTest finished')
         self.next_state = self.request_finish
