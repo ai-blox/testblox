@@ -18,8 +18,8 @@ class BaseUnit(object):
         self.start_time = None
         self.end_time = None
 
-        self.currState = self.state_0
-        self.nextState = self.currState
+        self.curr_state = self.state_0
+        self.next_state = self.curr_state
         self.finished = False
         self.finish_test = False
         self.error_msg = None
@@ -33,17 +33,17 @@ class BaseUnit(object):
         return self.config.get(param, default)
 
     def run(self):
-        self.currState = self.state_0
-        self.nextState = self.currState
+        self.curr_state = self.state_0
+        self.next_state = self.curr_state
         self.finished = False
         self.finish_test = False
         self.error_msg = None
 
         self.start_time = datetime.datetime.now()
         while not self.finish_test:
-            self.nextState = self.currState
-            self.currState()
-            self.currState = self.nextState
+            self.next_state = self.curr_state
+            self.curr_state()
+            self.curr_state = self.next_state
         self.end_time = datetime.datetime.now()
         duration = self.end_time - self.start_time
         minutes = divmod(duration.total_seconds(), 60)

@@ -9,10 +9,10 @@ class Tenma(DriverBase):
     def __init__(self, config):
         super().__init__(config)
 
-        self.maxVoltage = self.check_config_parameter('max_voltage', 24)
+        self.max_voltage = self.check_config_parameter('max_voltage', 24)
         self.serial_port = self.check_config_parameter('serial_port', mandatory=True)
 
-        if (self.maxVoltage is None) or (self.serial_port is None):
+        if (self.max_voltage is None) or (self.serial_port is None):
             self.logger.error('Failed to initialize Tenma driver')
             return
 
@@ -25,46 +25,46 @@ class Tenma(DriverBase):
 
         self.initialized = True
 
-    def setVoltage(self, voltage):
-        if voltage > self.maxVoltage:
+    def set_voltage(self, voltage):
+        if voltage > self.max_voltage:
             self.logger.warning('Try to set a voltage higher then allowed: %.2F' % voltage)
             return
         data = b'VSET1:%.2F' % voltage
         self.send(data)
 
-    def setCurrent(self, current):
+    def set_current(self, current):
         data = b'ISET1:%.3F' % current
         self.send(data)
 
-    def getSetVoltage(self):
+    def get_set_voltage(self):
         response = self.read(b'VSET1?')
         return float(response)
 
-    def getSetCurrent(self):
+    def get_set_current(self):
         response = self.read(b'ISET1?')
         return float(response)
 
-    def getActualVoltage(self):
+    def get_actual_voltage(self):
         response = self.read(b'VOUT1?')
         return float(response)
 
-    def getActualCurrent(self):
+    def get_actual_current(self):
         response = self.read(b'IOUT1?')
         return float(response)
 
-    def powerOn(self):
+    def power_on(self):
         data = b'OUT1'
         self.send(data)
 
-    def powerOff(self):
+    def power_off(self):
         data = b'OUT0'
         self.send(data)
 
-    def readDevice(self):
+    def read_device(self):
         response = self.read(b'*IDN?')
         return response
 
-    def isConnected(self):
+    def is_connected(self):
         device = self.readDevice()
         if device.find('TENMA') < 0 and device.find("KORAD") < 0:
             return False
@@ -91,8 +91,8 @@ if __name__ == "__main__":
     psu = Tenma("PS1", 15.00, "/dev/tty.usbmodem001C284402481")
     psu.setVoltage(12.34)
     time.sleep(1)
-    psu.powerOn()
+    psu.power_on()
     time.sleep(1)
-    psu.powerOff()
+    psu.power_off()
     time.sleep(1)
     psu.setVoltage(0.0)

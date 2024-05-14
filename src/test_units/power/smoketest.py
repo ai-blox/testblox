@@ -1,4 +1,4 @@
-from src.test_units.base import BaseUnit
+from src.test_units.baseunit import BaseUnit
 import time
 
 class SmokeTest(BaseUnit):
@@ -33,48 +33,48 @@ class SmokeTest(BaseUnit):
 
     def state_0(self):
         self.logger.info('Start SmokeTest test')
-        self.nextState = self.state_1
+        self.next_state = self.state_1
 
     def state_1(self):
         self.logger.info('Setup power supply')
-        self.tenma.powerOff()
-        self.tenma.setVoltage(self.voltage)
-        self.tenma.setCurrent(self.current)
-        self.nextState = self.state_2
+        self.tenma.power_off()
+        self.tenma.set_voltage(self.voltage)
+        self.tenma.set_current(self.current)
+        self.next_state = self.state_2
 
     def state_2(self):
         self.logger.info('Wait %d seconds' % self.power_up_delay)
         time.sleep(self.power_up_delay)
-        self.nextState = self.state_3
+        self.next_state = self.state_3
 
     def state_3(self):
         self.logger.info('Turn on power supply')
-        self.tenma.powerOn()
-        self.nextState = self.state_4
+        self.tenma.power_on()
+        self.next_state = self.state_4
 
     def state_4(self):
         self.logger.info('Wait %d seconds before do measurement' % self.test_time)
         time.sleep(self.test_time)
-        self.nextState = self.state_5
+        self.next_state = self.state_5
 
     def state_5(self):
-        self.actualCurrent = self.tenma.getActualCurrent()
-        self.logger.info('Measured Current: %f', self.actualCurrent)
+        self.actual_current = self.tenma.get_actual_current()
+        self.logger.info('Measured Current: %f', self.actual_current)
 
 
         if (self.leave_state == False):
             self.logger.info('Leave state == False, turnoff power supply')
-            self.tenma.powerOff()
+            self.tenma.power_off()
 
-        self.nextState = self.state_6
+        self.next_state = self.state_6
 
     def state_6(self):
-        if (self.actualCurrent < self.min_current) or (self.actualCurrent > self.max_current):
-            self.logger.error('Measure current is not within borders: %f < %f < %f', self.min_current, self.actualCurrent, self.max_current)
-            self.tenma.powerOff()
+        if (self.actual_current < self.min_current) or (self.actual_current > self.max_current):
+            self.logger.error('Measure current is not within borders: %f < %f < %f', self.min_current, self.actual_current, self.max_current)
+            self.tenma.power_off()
 
-        self.nextState = self.request_finish()
+        self.next_state = self.state_finish
 
     def state_finish(self):
         self.logger.info('SmokeTest finished')
-        self.nextState = self.request_finish
+        self.next_state = self.request_finish

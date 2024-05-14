@@ -34,16 +34,14 @@ test-benches:
 
   BLOX-S:
     drivers:
-      -
-        module: ps.tenma
+      - module: ps.tenma
         class: Tenma
         config:
           name: PS1
           serial_port: /dev/tty.usbmodem001C284402481
 
     test-units:
-      -
-        module: power.smoke_test
+      - module: power.smoketest
         class: SmokeTest
         config:
           name: SmokeTest
