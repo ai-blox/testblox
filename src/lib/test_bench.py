@@ -1,28 +1,33 @@
 from importlib import import_module
+from src.lib.database import DataBase
 import datetime
 import logging
 
 
 class TestBench:
 
-    def __init__(self, name, config):
+    def __init__(self, test_banch_name, database):
 
-        self.logger = logging.getLogger(name)
-        self.logger.info('Initialize %s test bench' % name)
+        self.logger = logging.getLogger(test_banch_name)
+        self.logger.info('Initialize %s test bench' % test_banch_name)
 
         self.start_time = None
         self.end_time = None
 
-        self.drivers = []
-        self.unit_tests = []
+        self.test_banch_name = test_banch_name
+        self.database = database
 
-        for driver in config['drivers']:
+        self.drivers = []
+        self.test_units = []
+
+        for driver in database.get_test_bench_drivers(self.test_banch_name):
+            print(driver)
             module_name = 'src.drivers.' + driver['module']
             self.logger.info('Import driver %s:' % module_name)
             class_name = driver['class']
             driver_module = import_module(module_name)
             driver_class = getattr(driver_module, class_name)
-            driver_obj = driver_class(driver['config'])
+            driver_obj = driver_class(database)
 
             # Only add the unit test if the initialization was successful
             if driver_obj is not None:
@@ -38,7 +43,7 @@ class TestBench:
 
             # Only add the unit test if the initialization was successful
             if unit_obj is not None:
-                self.unit_tests.append(unit_obj)
+                self.test_units.append(unit_obj)
 
     def get_driver_by_name(self, name):
         for driver in self.drivers:
@@ -51,7 +56,7 @@ class TestBench:
 
         self.start_time = datetime.datetime.now()
 
-        for unit in self.unit_tests:
+        for unit in self.test_units:
             if unit.initialized:
                 unit.run()
 
@@ -61,4 +66,5 @@ class TestBench:
         seconds = minutes[1]
         self.logger.info('Test finished, duration: {}:{}'.format(int(minutes[0]), seconds))
 
-
+        for unit in self.test_units:
+            unit.exit_test()
