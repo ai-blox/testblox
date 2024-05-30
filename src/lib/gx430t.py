@@ -162,7 +162,7 @@ class GX430t(object):
         label += '^FO5,85\n'
         label += '^FDMAC: %s^FS\n' % mac_internet
         label += '^AA,20\n'
-        label += '^FO455,100\n'
+        label += '^FO455,90\n'
         label += '^FD(INTERNET)^FS\n'
 
         label += '^AAN,30,17\n'
