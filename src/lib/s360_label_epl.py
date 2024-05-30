@@ -19,10 +19,10 @@ from io import BytesIO
 import sys
 
 
-class S360LabelZpl(object):
+class S360LabelEpl(object):
     def __init__(self, name, printer=None, label_type=1):
         self.logger = logging.getLogger(name)
-        self.logger.info('Initialize S360LabelZpl module')
+        self.logger.info('Initialize S360LabelEpl module')
         self.printer = printer
         self.labelType = label_type
         self.dotsPerMm = 8
@@ -34,32 +34,15 @@ class S360LabelZpl(object):
         if label_type == 1:
             self.set_label_size(12.7, 3.175, 50.8)
         elif label_type == 2:
-            self.set_label_size(32, 3, 57)
+            self.set_label_size(32, 4, 57)
         else:
             self.logger.error('Unknown label type')
-
-        self.set_print_head_resistance("0784")
-        self.set_ribbon_tension("L")
 
 
     def set_printer(self, printer, dots_per_mm=None):
         self.printer = printer
         if dots_per_mm:
             self.dotsPerMm = dots_per_mm
-
-    def set_print_head_resistance(self, resistance):
-
-        commands = '\n'
-        commands += '^SR%s\n' % (resistance)
-        self.logger.debug("Send command: " + commands.replace('\n', '\\n'))
-        self._output(commands)
-
-    def set_ribbon_tension(self, tension):
-
-        commands = '\n'
-        commands += '^SJW%s\n' % (tension)
-        self.logger.debug("Send command: " + commands.replace('\n', '\\n'))
-        self._output(commands)
 
     def set_label_size(self, heigth, distance, width, in_inch=False):
         if not in_inch:
@@ -150,19 +133,15 @@ class S360LabelZpl(object):
 
         label = '^XA\n'
 
-        # Label width: 51, 51 * 8 = 408
-        # Label height: 25, 25 * 8 = 200
-        # label += '^FO30,10^GB408,200,2^FS\n'
-
-        label += '^FX Black bar with serial number\n'
-        # label += '^FO30,20^GB300,60,2^FS\n'
-        label += '^FO20,50\n'
-        label += '^FR\n'
-        label += '^AC,40\n'
-        label += '^FDSN: S360N120120^FS\n'
+        label += '^FO10,20^GB585,60,60^FS'
 
         label += '^XZ\n'
 
+        #label = '\n'
+        #label += 'A20,20,0,4,1,1,R,"SN: %s"\n' % (box_serial_number)
+        #label += 'A20,120,0,2,1,1,N,"MAC: %s"\n' % (mac_internet)
+        #label += 'A20,220,0,2,1,1,N,"MAC: %s"\n' % (mac_camera)
+        #label += 'B20,320,0,1,1,1,,1,N,%s\n' % (box_serial_number)
 
         self.print_label(label)
 
@@ -170,8 +149,33 @@ class S360LabelZpl(object):
 def main():
         logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.DEBUG)
 
-        printer = S360LabelZpl("ZT111", 'Zebra_ZT111', 2)
-        printer.print_s360_label("SN360N1291292ABCDEF", "12:34:56:78:90:ab:cd", "ab:cd:12:34:56:78:90")
+        printer = S360LabelEpl("ZT111", 'Zebra_ZT111', 1)
+        #printer.print_s360_label("SN360N1291292ABCDEF", "12:34:56:78:90:ab:cd", "ab:cd:12:34:56:78:90")
+
+        #printer.delete_all_graphics()
+        #printer.delete_all_graphics()
+        #printer.delete_graphics("S360")
+        #printer.delete_graphics("S360")
+
+        printer.store_graphics("S3601", "s360-label-10.71.0001 - 1-bit.pcx")
+        printer.store_graphics("S3602", "s360-label-10.71.0002 - 1-bit.pcx")
+        printer.store_graphics("S3603", "s360-label-10.71.0003 - 1-bit.pcx")
+
+        for i in range(200):
+            label = '\n'
+            label += 'GG0,10,"S3601"\n'
+            printer.print_label(label)
+            time.sleep(0.1)
+
+        #for i in range(750):
+        #    label = '\n'
+        #    label += 'GG0,10,"S3602"\n'
+        #    printer.print_label(label)
+
+        #for i in range(110):
+        #   label = '\n'
+        #   label += 'GG0,10,"S3603"\n'
+        #   printer.print_label(label)
 
 if __name__ == '__main__':
     main()

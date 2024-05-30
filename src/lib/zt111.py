@@ -141,12 +141,12 @@ def main():
     #label += 'LE55,5,2,85\n'
     #label += 'B85,55,0,3,3,1,30,N,"10.30.0002"\n'
 
-    label = '\n'
-    label += 'A40,6,1,2,1,1,N,"AI-BLOX"\n'
-    label += 'A65,10,0,1,1,1,N,"MX1030-3 - 10.30.0003 - S/N:23047"\n'
-    label += 'A65,30,0,2,1,1,N,"Xavier NX 16Gb, Headless"\n'
-    label += 'LE55,5,2,85\n'
-    label += 'B85,55,0,3,3,1,30,N,"10.30.0003"\n'
+    #label = '\n'
+    #label += 'A40,6,1,2,1,1,N,"AI-BLOX"\n'
+    #label += 'A65,10,0,1,1,1,N,"MX1030-3 - 10.30.0003 - S/N:23047"\n'
+    #label += 'A65,30,0,2,1,1,N,"Xavier NX 16Gb, Headless"\n'
+    #label += 'LE55,5,2,85\n'
+    #label += 'B85,55,0,3,3,1,30,N,"10.30.0003"\n'
 
     #label = '\n'
     #label += 'A40,6,1,2,1,1,N,"AI-BLOX"\n'
@@ -287,14 +287,14 @@ def main():
     #label += 'LE55,5,2,85\n'
     #label += 'B85,55,0,3,3,1,30,N,"10.30.0003"\n'
 
-    for i in range(750):
+    for i in range(200):
         label = '\n'
-        label += 'A25,20,0,2,1,1,N,"PS-2005"\n'
-        label += 'A25,40,0,2,1,1,N,"10.60.2006"\n'
-        label += 'B25,65,0,3,3,1,30,N,"10.60.2006"\n'
+        label += 'A25,40,0,2,1,1,N,"Programmed"\n'
+        #label += 'A25,40,0,2,1,1,N,"90.05.0004.A"\n'
+        #label += 'B25,65,0,3,3,1,30,N,"90.05.0004.A"\n'
 
         printer.print_label(label)
-        time.sleep(0.1)
+        time.sleep(0.2)
 
     #label = '^XA'
     #label += '^FX Black bar with serial number'

@@ -19,28 +19,24 @@ from io import BytesIO
 import sys
 
 
-class S360LabelZpl(object):
+class GX430t(object):
     def __init__(self, name, printer=None, label_type=1):
         self.logger = logging.getLogger(name)
-        self.logger.info('Initialize S360LabelZpl module')
+        self.logger.info('Initialize GX430t module')
         self.printer = printer
         self.labelType = label_type
-        self.dotsPerMm = 8
-        self.dotsPerInch = 203
+        self.dotsPerMm = 12
+        self.dotsPerInch = 304.8
 
         if printer is None:
             return
 
-        if label_type == 1:
-            self.set_label_size(12.7, 3.175, 50.8)
-        elif label_type == 2:
-            self.set_label_size(32, 3, 57)
-        else:
-            self.logger.error('Unknown label type')
-
-        self.set_print_head_resistance("0784")
-        self.set_ribbon_tension("L")
-
+        #if label_type == 1:
+        #    self.set_label_size(50.8, 3.175, 25.4)
+        #elif label_type == 2:
+        #    self.set_label_size(32, 3, 57)
+        #else:
+        #    self.logger.error('Unknown label type')
 
     def set_printer(self, printer, dots_per_mm=None):
         self.printer = printer
@@ -76,9 +72,7 @@ class S360LabelZpl(object):
 
     def print_label(self, label):
         commands = '\n'
-        commands += 'N\n'
         commands += '%s\n' % label
-        commands += 'P\n'
         self._output(commands)
         self.logger.debug("Send command: " + commands.replace('\n', '\\n'))
 
@@ -149,20 +143,41 @@ class S360LabelZpl(object):
     def print_s360_label(self, box_serial_number, mac_internet, mac_camera):
 
         label = '^XA\n'
+        label += '^PW600\n'
+        label += '^LL600\n'
+        label += '^LH30,30\n'
 
-        # Label width: 51, 51 * 8 = 408
-        # Label height: 25, 25 * 8 = 200
-        # label += '^FO30,10^GB408,200,2^FS\n'
+        # Label width: 50.8, -> 590 dots
+        # Label height: 25.4, -> 290 dots
 
         label += '^FX Black bar with serial number\n'
-        # label += '^FO30,20^GB300,60,2^FS\n'
-        label += '^FO20,50\n'
+        label += '^FO0,0^GB560,60,60^FS\n'
+        label += '^FO15,17\n'
         label += '^FR\n'
         label += '^AC,40\n'
-        label += '^FDSN: S360N120120^FS\n'
+        label += '^FDSN: %s^FS\n' % box_serial_number
+
+        label += '^FX Second section with MAC addresses\n'
+        label += '^AAN,30,17\n'
+        label += '^FO5,85\n'
+        label += '^FDMAC: %s^FS\n' % mac_internet
+        label += '^AA,20\n'
+        label += '^FO455,100\n'
+        label += '^FD(INTERNET)^FS\n'
+
+        label += '^AAN,30,17\n'
+        label += '^FO5,140\n'
+        label += '^FDMAC: %s^FS\n' % mac_camera
+        label += '^AA,20\n'
+        label += '^FO455,145\n'
+        label += '^FD(CAMERA)^FS\n'
+
+        label += '^FX Third section with bar code.\n'
+        label += '^FO20,190^BY2^BC,60,Y,N,N,A^FD%s^FS\n' % box_serial_number
+
+        label += '^FO465,180^GFA,1260,1260,15,,::::::::O0FFP01FE,N0IFO01FFE,M07IFO0IFE,L01JFN03IFE,L07JFN0JFE,L0KFM01JFE,K01KFM07JFE,K07KFM0KFE,K0LFL01KFE,J01JF8M03JF,J03IFCN07IF,J03FFEO0IFC,J07FFCO0IF8,J0IFO01FFE,I01FFEO03FFC,I01FFCO03FF8,I03FF8O07FF,I03FFP07FE,I07FFP0FFC,I07FEP0FFC,I07FCP0FF8,I0FFCO01FF8,I0FF8O01FF,::001FF8O03FF,001FFP03LF8,:::::::001FF8O03LF8,I0FF8O03FF,I0FF8O01FF,:I0FFCO01FF8,I07FCO01FF8,I07FEP0FFC:I03FFP07FE,I03FF8O07FF,I01FFCO03FF8,I01FFEO03FFC,J0IFO01FFE,J07FF8O0IF,J07FFEO0IFC,J03IF8N07IF,J01JFN03IFE,K0LFL01KFE,K07KFM0KFE,K03KFM07JFE,L0KFM01JFE,L07JFN0JFE,L01JFN03IFE,M07IFO0IFE,M01IFO03FFE,N01FFP03FE,,::::::::::::::^FS'
 
         label += '^XZ\n'
-
 
         self.print_label(label)
 
@@ -170,8 +185,8 @@ class S360LabelZpl(object):
 def main():
         logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.DEBUG)
 
-        printer = S360LabelZpl("ZT111", 'Zebra_ZT111', 2)
-        printer.print_s360_label("SN360N1291292ABCDEF", "12:34:56:78:90:ab:cd", "ab:cd:12:34:56:78:90")
+        printer = GX430t("GX430t", 'GX430t', 1)
+        printer.print_s360_label("SN360N120120ABCDEF", "12:34:56:78:90:ab:cd", "ab:cd:12:34:56:78:90")
 
 if __name__ == '__main__':
     main()
