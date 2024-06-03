@@ -132,7 +132,7 @@ class GX430t(object):
         p.stdin.close()
 
 
-    def print_s360_label(self, box_serial_number, mac_internet, mac_camera):
+    def print_s360_box_label(self, box_serial_number, mac_internet, mac_camera):
 
         label = '^XA\n'
         label += '^PW600\n'
@@ -175,6 +175,41 @@ class GX430t(object):
 
         label += '^FO465,180^GFA,1260,1260,15,,::::::::O0FFP01FE,N0IFO01FFE,M07IFO0IFE,L01JFN03IFE,L07JFN0JFE,L0KFM01JFE,K01KFM07JFE,K07KFM0KFE,K0LFL01KFE,J01JF8M03JF,J03IFCN07IF,J03FFEO0IFC,J07FFCO0IF8,J0IFO01FFE,I01FFEO03FFC,I01FFCO03FF8,I03FF8O07FF,I03FFP07FE,I07FFP0FFC,I07FEP0FFC,I07FCP0FF8,I0FFCO01FF8,I0FF8O01FF,::001FF8O03FF,001FFP03LF8,:::::::001FF8O03LF8,I0FF8O03FF,I0FF8O01FF,:I0FFCO01FF8,I07FCO01FF8,I07FEP0FFC:I03FFP07FE,I03FF8O07FF,I01FFCO03FF8,I01FFEO03FFC,J0IFO01FFE,J07FF8O0IF,J07FFEO0IFC,J03IF8N07IF,J01JFN03IFE,K0LFL01KFE,K07KFM0KFE,K03KFM07JFE,L0KFM01JFE,L07JFN0JFE,L01JFN03IFE,M07IFO0IFE,M01IFO03FFE,N01FFP03FE,,::::::::::::::^FS'
 
+        label += '^PQ2\n'
+
+        label += '^XZ\n'
+
+        self.print_label(label)
+
+    def print_s360_pcb_label(self, box_serial_number, atecc_unique_id, pcb_serial_number):
+
+        label = '^XA\n'
+        label += '^PW600\n'
+        label += '^LL600\n'
+        label += '^LH30,30\n'
+
+        # Label width: 50.8, -> 590 dots
+        # Label height: 25.4, -> 290 dots
+
+        label += '^FX Black bar with serial number\n'
+        label += '^FO5,30\n'
+        label += '^ACN,27\n'
+        label += '^FDSN: %s^FS\n' % box_serial_number
+
+        label += '^FX Second section with MAC addresses\n'
+        label += '^FO5,80\n'
+        label += '^ACN,27\n'
+        label += '^FDID: %s^FS\n' % atecc_unique_id
+
+        label += '^FO5,130\n'
+        label += '^ACN,27\n'
+        label += '^FDPCB: %s^FS\n' % pcb_serial_number
+
+        label += '^FX Third section with bar code.\n'
+        label += '^FO20,190^BY2^BC,60,Y,N,N,A^FD%s^FS\n' % box_serial_number
+
+        label += '^FO465,180^GFA,1260,1260,15,,::::::::O0FFP01FE,N0IFO01FFE,M07IFO0IFE,L01JFN03IFE,L07JFN0JFE,L0KFM01JFE,K01KFM07JFE,K07KFM0KFE,K0LFL01KFE,J01JF8M03JF,J03IFCN07IF,J03FFEO0IFC,J07FFCO0IF8,J0IFO01FFE,I01FFEO03FFC,I01FFCO03FF8,I03FF8O07FF,I03FFP07FE,I07FFP0FFC,I07FEP0FFC,I07FCP0FF8,I0FFCO01FF8,I0FF8O01FF,::001FF8O03FF,001FFP03LF8,:::::::001FF8O03LF8,I0FF8O03FF,I0FF8O01FF,:I0FFCO01FF8,I07FCO01FF8,I07FEP0FFC:I03FFP07FE,I03FF8O07FF,I01FFCO03FF8,I01FFEO03FFC,J0IFO01FFE,J07FF8O0IF,J07FFEO0IFC,J03IF8N07IF,J01JFN03IFE,K0LFL01KFE,K07KFM0KFE,K03KFM07JFE,L0KFM01JFE,L07JFN0JFE,L01JFN03IFE,M07IFO0IFE,M01IFO03FFE,N01FFP03FE,,::::::::::::::^FS'
+
         label += '^XZ\n'
 
         self.print_label(label)
@@ -184,7 +219,9 @@ def main():
         logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.DEBUG)
 
         printer = GX430t("GX430t", 'GX430t', 1)
-        printer.print_s360_label("SN360N120120ABCDEF", "12:34:56:78:90:ab:cd", "ab:cd:12:34:56:78:90")
+        printer.print_s360_pcb_label("SN360N120120ABCDEF", "0123bdf2f6e8f37301", "1717500612345")
+        printer.print_s360_box_label("SN360N120120ABCDEF", "12:34:56:78:90:ab:cd", "ab:cd:12:34:56:78:90")
+
 
 if __name__ == '__main__':
     main()
