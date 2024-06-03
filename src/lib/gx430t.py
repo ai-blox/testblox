@@ -3,20 +3,12 @@ import logging
 import time
 import subprocess
 import os
+import sys
 
 # EPL2 Programming manual can be found here:
 # https://support.zebra.com/cpws/docs/eltron/epl2/EPL2_Prog.pdf
 
-import PIL
-# we only want to exercise the PCX code for now: unregister all other plugins so our input
-# doesn't get recognized as those formats. not getting recognized as a PCX should just lead to
-# a single boring path that doesn't distract the fuzzing process.
-PIL._plugins[:] = ["PcxImagePlugin"]
 
-from PIL import Image
-import codecs
-from io import BytesIO
-import sys
 
 
 class GX430t(object):
@@ -160,14 +152,20 @@ class GX430t(object):
         label += '^FX Second section with MAC addresses\n'
         label += '^AAN,30,17\n'
         label += '^FO5,85\n'
-        label += '^FDMAC: %s^FS\n' % mac_internet
+        label += '^FDMAC:^FS\n'
+        label += '^AAN,30,17\n'
+        label += '^FO80,85\n'
+        label += '^FD%s^FS\n' % mac_internet
         label += '^AA,20\n'
         label += '^FO455,90\n'
         label += '^FD(INTERNET)^FS\n'
 
         label += '^AAN,30,17\n'
         label += '^FO5,140\n'
-        label += '^FDMAC: %s^FS\n' % mac_camera
+        label += '^FDMAC:^FS\n'
+        label += '^AAN,30,17\n'
+        label += '^FO80,140\n'
+        label += '^FD%s^FS\n' % mac_camera
         label += '^AA,20\n'
         label += '^FO455,145\n'
         label += '^FD(CAMERA)^FS\n'
