@@ -136,21 +136,21 @@ def main():
 
     #label = '\n'
     #label += 'A40,6,1,2,1,1,N,"AI-BLOX"\n'
-    #label += 'A65,10,0,1,1,1,N,"MX1030-2 - 10.30.0002 - S/N:23046"\n'
+    #label += 'A65,10,0,1,1,1,N,"MX1030-2 - 10.30.0002 - S/N:240004"\n'
     #label += 'A65,30,0,2,1,1,N,"Xavier NX 8Gb, 7\\" Touch"\n'
     #label += 'LE55,5,2,85\n'
     #label += 'B85,55,0,3,3,1,30,N,"10.30.0002"\n'
 
     #label = '\n'
     #label += 'A40,6,1,2,1,1,N,"AI-BLOX"\n'
-    #label += 'A65,10,0,1,1,1,N,"MX1030-3 - 10.30.0003 - S/N:23047"\n'
+    #label += 'A65,10,0,1,1,1,N,"MX1030-3 - 10.30.0003 - S/N:24019"\n'
     #label += 'A65,30,0,2,1,1,N,"Xavier NX 16Gb, Headless"\n'
     #label += 'LE55,5,2,85\n'
     #label += 'B85,55,0,3,3,1,30,N,"10.30.0003"\n'
 
     #label = '\n'
     #label += 'A40,6,1,2,1,1,N,"AI-BLOX"\n'
-    #label += 'A65,10,0,1,1,1,N,"MX1030-4 - 10.30.0004 - S/N:23039"\n'
+    #label += 'A65,10,0,1,1,1,N,"MX1030-4 - 10.30.0004 - S/N:240005"\n'
     #label += 'A65,30,0,2,1,1,N,"Xavier NX 16Gb, 7\\" Touch"\n'
     #label += 'LE55,5,2,85\n'
     #label += 'B85,55,0,3,3,1,30,N,"10.30.0004"\n'
@@ -178,6 +178,13 @@ def main():
 
     #label = '\n'
     #label += 'A40,6,1,2,1,1,N,"AI-BLOX"\n'
+    #label += 'A65,10,0,1,1,1,N,"BLOX ABD-10.70.0002.D - S/N:24010"\n'
+    #label += 'A65,30,0,2,1,1,N,"Jetson Nano, Headless"\n'
+    #label += 'LE45,5,2,85\n'
+    #label += 'B55,55,0,3,3,1,30,N,"10.70.0002.D"\n'
+
+    #label = '\n'
+    #label += 'A40,6,1,2,1,1,N,"AI-BLOX"\n'
     #label += 'A65,10,0,1,1,1,N,"CB-0210 - 10.50.0210 - S/N:23003"\n'
     #label += 'A65,30,0,2,1,1,N,"GigE + LTE Cat. 4"\n'
     #label += 'LE55,5,2,85\n'
@@ -192,21 +199,21 @@ def main():
 
     #label = '\n'
     #label += 'A40,6,1,2,1,1,N,"AI-BLOX"\n'
-    #label += 'A65,10,0,1,1,1,N,"CB-0110 - 10.50.0110 - S/N:23006"\n'
+    #label += 'A65,10,0,1,1,1,N,"CB-0110 - 10.50.0110 - S/N:240001"\n'
     #label += 'A65,30,0,2,1,1,N,"GigE + Wifi comm module"\n'
     #label += 'LE55,5,2,85\n'
     #label += 'B85,55,0,3,3,1,30,N,"10.50.0110"\n'
 
     #label = '\n'
     #label += 'A40,6,1,2,1,1,N,"AI-BLOX"\n'
-    #label += 'A65,10,0,1,1,1,N,"CB-0210 - 10.50.0210 - S/N:23001"\n'
+    #label += 'A65,10,0,1,1,1,N,"CB-0210 - 10.50.0210 - S/N:240014"\n'
     #label += 'A65,30,0,2,1,1,N,"GigE + LTE Cat 4 comm module"\n'
     #label += 'LE55,5,2,85\n'
     #label += 'B85,55,0,3,3,1,30,N,"10.50.0210"\n'
 
     #label = '\n'
     #label += 'A40,6,1,2,1,1,N,"AI-BLOX"\n'
-    #label += 'A65,10,0,1,1,1,N,"CB-0010 - 10.60.0005 - S/N:23009"\n'
+    #label += 'A65,10,0,1,1,1,N,"BLX PRG - 10.60.0005 - S/N:24004"\n'
     #label += 'A65,30,0,2,1,1,N,"BLOX Programming Device"\n'
     #label += 'LE55,5,2,85\n'
     #label += 'B85,55,0,3,3,1,30,N,"10.60.0005"\n'
@@ -220,14 +227,14 @@ def main():
 
     #label = '\n'
     #label += 'A40,6,1,2,1,1,N,"AI-BLOX"\n'
-    #label += 'A65,10,0,1,1,1,N,"IB-0210 - 10.40.0210 - S/N:23010"\n'
+    #label += 'A65,10,0,1,1,1,N,"IB-0210 - 10.40.0210 - S/N:240003"\n'
     #label += 'A65,30,0,2,1,1,N,"4-Ch USB 3.0 with 4-DO/DI"\n'
     #label += 'LE55,5,2,85\n'
     #label += 'B85,55,0,3,3,1,30,N,"10.40.0210"\n'
 
     #label = '\n'
     #label += 'A40,6,1,2,1,1,N,"AI-BLOX"\n'
-    #label += 'A65,10,0,1,1,1,N,"IB-0310 - 10.40.0310 - S/N:23016"\n'
+    #label += 'A65,10,0,1,1,1,N,"IB-0310 - 10.40.0310 - S/N:240014"\n'
     #label += 'A65,30,0,2,1,1,N,"4-Ch 100Mb Eth with 4-DO/DI"\n'
     #label += 'LE55,5,2,85\n'
     #label += 'B85,55,0,3,3,1,30,N,"10.40.0310"\n'
@@ -253,7 +260,7 @@ def main():
     #label += 'LE25,6,2,85\n'
     #label += 'A40,15,0,2,1,1,N,"MX1030-2"\n'
     #label += 'A40,40,0,2,1,1,N,"10.30.0002"\n'
-    #label += 'A40,65,0,2,1,1,N,"2023010046"\n'
+    #label += 'A40,65,0,2,1,1,N,"240004"\n'
     #label += 'LE200,6,2,85\n'
 
     #label = '\n'
@@ -261,16 +268,16 @@ def main():
     #label += 'LE25,6,2,85\n'
     #label += 'A40,15,0,2,1,1,N,"MX1030-3"\n'
     #label += 'A40,40,0,2,1,1,N,"10.30.0003"\n'
-    #label += 'A40,65,0,2,1,1,N,"2023010037"\n'
+    #label += 'A40,65,0,2,1,1,N,"240019"\n'
     #label += 'LE200,6,2,85\n'
 
-    #label = '\n'
-    #label += ' \n'
-    #label += 'LE25,6,2,85\n'
-    #label += 'A40,15,0,2,1,1,N,"MX1030-4"\n'
-    #label += 'A40,40,0,2,1,1,N,"10.30.0004"\n'
-    #label += 'A40,65,0,2,1,1,N,"2023010040"\n'
-    #label += 'LE200,6,2,85\n'
+    label = '\n'
+    label += ' \n'
+    label += 'LE25,6,2,85\n'
+    label += 'A40,15,0,2,1,1,N,"BLOX ABD"\n'
+    label += 'A40,40,0,2,1,1,N,"10.70.0002.D"\n'
+    label += 'A40,65,0,2,1,1,N,"240010"\n'
+    label += 'LE200,6,2,85\n'
 
     #label = '\n'
     #label += ' \n'
@@ -281,20 +288,19 @@ def main():
     #label += 'LE200,6,2,85\n'
 
     #label = '\n'
-    #label += 'A40,6,1,2,1,1,N,"S360"\n'
-    #label += 'A65,10,0,2,1,1,N,"Secury 360 V3"\n'
-    #label += 'A65,30,0,1,1,1,N,"V3-AIBP0022PDBB-S/N:2024050005"\n'
-    #label += 'LE55,5,2,85\n'
-    #label += 'B85,55,0,3,3,1,30,N,"10.30.0003"\n'
+    #label += 'A40,20,1,2,1,1,N,"S360"\n'
+    #label += 'A65,10,0,3,1,1,N,"Property of"\n'
+    #label += 'A65,50,0,3,1,1,N,"Secury 360 BV"\n'
+    #label += 'LE50,6,2,85\n'
 
-    for i in range(200):
-        label = '\n'
-        label += 'A25,40,0,2,1,1,N,"Programmed"\n'
-        #label += 'A25,40,0,2,1,1,N,"90.05.0004.A"\n'
-        #label += 'B25,65,0,3,3,1,30,N,"90.05.0004.A"\n'
 
-        printer.print_label(label)
-        time.sleep(0.2)
+    #for i in range(65):
+    #    label = '\n'
+    #    label += 'A25,10,0,2,1,1,N,"PS-2006"\n'
+    #    label += 'A25,40,0,2,1,1,N,"10.60.2007"\n'
+    #    label += 'B25,65,0,3,3,1,30,N,"10.60.2007"\n'
+    #    printer.print_label(label)
+    #    time.sleep(0.2)
 
     #label = '^XA'
     #label += '^FX Black bar with serial number'

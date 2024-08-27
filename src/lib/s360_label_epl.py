@@ -157,15 +157,15 @@ def main():
         #printer.delete_graphics("S360")
         #printer.delete_graphics("S360")
 
-        printer.store_graphics("S3601", "s360-label-10.71.0001 - 1-bit.pcx")
-        printer.store_graphics("S3602", "s360-label-10.71.0002 - 1-bit.pcx")
-        printer.store_graphics("S3603", "s360-label-10.71.0003 - 1-bit.pcx")
+        #printer.store_graphics("S3601", "s360-label-10.71.0001 - 1-bit.pcx")
+        #printer.store_graphics("S3602", "s360-label-10.71.0002 - 1-bit.pcx")
+        #printer.store_graphics("S3603", "s360-label-10.71.0003 - 1-bit.pcx")
 
-        for i in range(200):
-            label = '\n'
-            label += 'GG0,10,"S3601"\n'
-            printer.print_label(label)
-            time.sleep(0.1)
+        #for i in range(200):
+        #    label = '\n'
+        #    label += 'GG0,10,"S3601"\n'
+        #    printer.print_label(label)
+        #    time.sleep(0.1)
 
         #for i in range(750):
         #    label = '\n'
