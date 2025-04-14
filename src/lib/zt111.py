@@ -219,12 +219,19 @@ def main():
     #label += 'LE55,5,2,85\n'
     #label += 'B85,55,0,3,3,1,30,N,"10.70.0007.D"\n'
 
+    #label = '\n'
+    #label += 'A20,6,1,2,1,1,N,"AI-BLOX"\n'
+    #label += 'A45,10,0,1,1,1,N,"OEM AS V3 -10.70.0007.E- S/N:250002"\n'
+    #label += 'A45,30,0,2,1,1,N,"Artisight Orin NX 16GB"\n'
+    #label += 'LE35,5,2,85\n'
+    #label += 'B50,55,0,3,3,1,30,N,"10.70.0007.E"\n'
+
     label = '\n'
     label += 'A20,6,1,2,1,1,N,"AI-BLOX"\n'
-    label += 'A45,10,0,1,1,1,N,"OEM AS V3 -10.70.0007.E- S/N:250002"\n'
-    label += 'A45,30,0,2,1,1,N,"Artisight Orin NX 16GB"\n'
+    label += 'A45,10,0,1,1,1,N,"MX1032-1 -10.32.0001 - S/N:250010"\n'
+    label += 'A45,30,0,2,1,1,N,"Orin AGX 32GB"\n'
     label += 'LE35,5,2,85\n'
-    label += 'B50,55,0,3,3,1,30,N,"10.70.0007.E"\n'
+    label += 'B50,55,0,3,3,1,30,N,"10.32.0001"\n'
 
     #label = '\n'
     #label += 'A40,6,1,2,1,1,N,"AI-BLOX"\n'
